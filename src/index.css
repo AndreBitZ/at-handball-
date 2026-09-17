@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 224 52% 5%;
+    --foreground: 210 40% 96%;
+    --card: 225 45% 8%;
+    --card-foreground: 210 40% 96%;
+    --popover: 225 45% 7%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 24 100% 55%;
+    --primary-foreground: 20 60% 6%;
+    --secondary: 224 35% 14%;
+    --secondary-foreground: 210 30% 90%;
+    --muted: 225 32% 12%;
+    --muted-foreground: 218 20% 62%;
+    --accent: 174 72% 52%;
+    --accent-foreground: 200 60% 6%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --live: 0 90% 58%;
+    --border: 223 30% 18%;
+    --input: 223 30% 16%;
+    --ring: 24 100% 55%;
+    --radius: 0.9rem;
+
+    --court-line: 214 35% 22%;
+    --glow: 24 100% 55%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.85);
+    color: hsl(var(--primary-foreground));
+  }
+}
+
+@layer utilities {
+  /* Subtle court lines backdrop */
+  .court-bg {
+    background-image:
+      radial-gradient(ellipse 90% 55% at 50% -10%, hsl(var(--primary) / 0.16), transparent 65%),
+      linear-gradient(hsl(var(--court-line) / 0.28) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--court-line) / 0.28) 1px, transparent 1px);
+    background-size: 100% 100%, 72px 72px, 72px 72px;
+  }
+
+  .glow-primary {
+    box-shadow:
+      0 0 24px hsl(var(--glow) / 0.35),
+      0 0 64px hsl(var(--glow) / 0.15);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 28px hsl(var(--glow) / 0.55);
+  }
+
+  .card-hover {
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-2px);
+    border-color: hsl(var(--primary) / 0.4);
+    box-shadow: 0 12px 40px -18px hsl(var(--glow) / 0.45);
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 999px;
+  }
+}
